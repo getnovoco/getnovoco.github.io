@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Novo Co — Fuel the Night.</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --black: #09090F;
+    --dark: #0D0D18;
+    --white: #FFFFFF;
+    --gold: #BF9A4A;
+    --gold-light: #D4B06A;
+    --muted: rgba(255,255,255,0.45);
+    --subtle: rgba(255,255,255,0.08);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 20px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(9,9,15,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--subtle);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .nav-brand {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--white)
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--white);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--white); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 32px 80px;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 50% 40%, rgba(191,154,74,0.07) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .hero-logo {
+    margin-bottom: 40px;
+  }
+
+  .hero-tagline {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+
+  .hero-headline {
+    font-size: clamp(36px, 6vw, 68px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 24px;
+    max-width: 700px;
+  }
+
+  .hero-headline span {
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--muted);
+    max-width: 480px;
+    margin-bottom: 48px;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    padding: 14px 36px;
+    border: 1px solid var(--gold);
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .hero-cta:hover {
+    background: var(--gold);
+    color: var(--black);
+  }
+
+  /* ── DIVIDER ── */
+  .section-divider {
+    width: 100%;
+    height: 1px;
+    background: var(--subtle);
+  }
+
+  /* ── WHAT WE DO ── */
+  .what {
+    padding: 100px 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .section-title {
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    color: var(--white);
+    margin-bottom: 20px;
+    max-width: 560px;
+  }
+
+  .section-body {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--muted);
+    max-width: 540px;
+  }
+
+  /* ── THREE PILLARS ── */
+  .pillars {
+    padding: 0 48px 100px;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .pillar {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--subtle);
+    border-radius: 8px;
+    padding: 36px 32px;
+  }
+
+  .pillar-icon {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 20px;
+  }
+
+  .pillar-title {
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  .pillar-body {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  /* ── HOW IT WORKS ── */
+  .how {
+    padding: 100px 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.02);
+    border-top: 1px solid var(--subtle);
+    border-bottom: 1px solid var(--subtle);
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    margin-top: 56px;
+  }
+
+  .step-number {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+
+  .step-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+
+  .step-body {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  /* ── CONTACT ── */
+  .contact {
+    padding: 100px 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .contact-title {
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+
+  .contact-sub {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--muted);
+    margin-bottom: 36px;
+    max-width: 420px;
+    line-height: 1.7;
+  }
+
+  .contact-email {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(191,154,74,0.3);
+    padding-bottom: 4px;
+    transition: border-color 0.2s;
+  }
+
+  .contact-email:hover {
+    border-color: var(--gold);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 32px 48px;
+    border-top: 1px solid var(--subtle);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .footer-name {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--white);
+  }
+
+  .footer-copy {
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--muted);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 18px 24px; }
+    .nav-links { display: none; }
+    .what, .contact { padding: 72px 24px; }
+    .pillars { grid-template-columns: 1fr; padding: 0 24px 72px; }
+    .how { padding: 72px 24px; }
+    .steps { grid-template-columns: 1fr; gap: 36px; }
+    footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <svg width="28" height="32" viewBox="0 0 90 108" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="8" y="5" width="74" height="98" rx="9" stroke="white" stroke-width="1.5" fill="none"/>
+      <rect x="20" y="14" width="13" height="56" rx="2" fill="white"/>
+      <rect x="57" y="14" width="13" height="56" rx="2" fill="white"/>
+      <polygon points="33,14 46,14 57,70 44,70" fill="white"/>
+      <rect x="61" y="14" width="9" height="9" rx="1.5" fill="#BF9A4A"/>
+      <rect x="21" y="84" width="48" height="7" rx="3.5" stroke="white" stroke-width="1.5" fill="none" opacity="0.65"/>
+    </svg>
+    <span class="nav-brand">Novo Co</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#what">What We Do</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-logo">
+    <svg width="64" height="72" viewBox="0 0 90 108" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="8" y="5" width="74" height="98" rx="9" stroke="white" stroke-width="1.5" fill="none"/>
+      <rect x="20" y="14" width="13" height="56" rx="2" fill="white"/>
+      <rect x="57" y="14" width="13" height="56" rx="2" fill="white"/>
+      <polygon points="33,14 46,14 57,70 44,70" fill="white"/>
+      <rect x="61" y="14" width="9" height="9" rx="1.5" fill="#BF9A4A"/>
+      <rect x="21" y="84" width="48" height="7" rx="3.5" stroke="white" stroke-width="1.5" fill="none" opacity="0.65"/>
+    </svg>
+  </div>
+  <p class="hero-tagline">Fuel the night.</p>
+  <h1 class="hero-headline">Premium nicotine vending,<br><span>built for the bar.</span></h1>
+  <p class="hero-sub">Novo Co places smart, cashless vending machines in 21+ bars — keeping your crowd stocked with Zyn pouches and more, all night long.</p>
+  <a href="#contact" class="hero-cta">Partner With Us</a>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- WHAT WE DO -->
+<section class="what" id="what">
+  <p class="section-eyebrow">What We Do</p>
+  <h2 class="section-title">Effortless nicotine vending for your venue.</h2>
+  <p class="section-body">Novo Co supplies, installs, and maintains smart vending machines in 21+ bars across Pennsylvania. We handle everything — you just collect your share of every sale.</p>
+</section>
+
+<!-- PILLARS -->
+<div class="pillars">
+  <div class="pillar">
+    <svg class="pillar-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="2" y="2" width="32" height="32" rx="4" stroke="#BF9A4A" stroke-width="1.5" fill="none"/>
+      <rect x="8" y="8" width="20" height="8" rx="2" fill="#BF9A4A" opacity="0.6"/>
+      <rect x="10" y="22" width="16" height="4" rx="2" stroke="#BF9A4A" stroke-width="1.2" fill="none" opacity="0.5"/>
+    </svg>
+    <div class="pillar-title">We supply the machine</div>
+    <div class="pillar-body">We purchase, install, and maintain the vending machine at no cost to you. Zero investment required from the venue.</div>
+  </div>
+  <div class="pillar">
+    <svg class="pillar-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="18" cy="18" r="15" stroke="#BF9A4A" stroke-width="1.5" fill="none"/>
+      <path d="M12 18 L16 22 L24 14" stroke="#BF9A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div class="pillar-title">Fully compliant</div>
+    <div class="pillar-body">Every machine is equipped with an ID scanner.</div>
+  </div>
+  <div class="pillar">
+    <svg class="pillar-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="4" y="10" width="28" height="18" rx="3" stroke="#BF9A4A" stroke-width="1.5" fill="none"/>
+      <line x1="4" y1="16" x2="32" y2="16" stroke="#BF9A4A" stroke-width="1.2" opacity="0.5"/>
+      <rect x="8" y="20" width="8" height="4" rx="1" fill="#BF9A4A" opacity="0.5"/>
+    </svg>
+    <div class="pillar-title">You earn, effortlessly</div>
+    <div class="pillar-body">Venues receive a percentage of every sale — no staff involvement, no overhead. The machine runs itself, 24/7.</div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <p class="section-eyebrow">How It Works</p>
+  <h2 class="section-title">Three steps to a new revenue stream.</h2>
+  <div class="steps">
+    <div>
+      <div class="step-number">01</div>
+      <div class="step-title">We qualify your venue</div>
+      <div class="step-body">We confirm your bar operates as a 21+ establishment at all times — a legal requirement for nicotine vending placement.</div>
+    </div>
+    <div>
+      <div class="step-number">02</div>
+      <div class="step-title">We install the machine</div>
+      <div class="step-body">We deliver, mount, stock, and configure the machine. Cashless payments, age verification, and remote management all built in.</div>
+    </div>
+    <div>
+      <div class="step-number">03</div>
+      <div class="step-title">You collect your share</div>
+      <div class="step-body">You receive a percentage of every transaction, paid out regularly. We handle restocking, maintenance, and compliance.</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <p class="section-eyebrow">Get In Touch</p>
+  <h2 class="contact-title">Ready to partner with us?</h2>
+  <p class="contact-sub">If you operate a 21+ bar and want to add a new revenue stream with zero effort, we'd love to hear from you.</p>
+  <a href="mailto:djordje@getnovo.co" class="contact-email">djordje@getnovo.co</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <svg width="20" height="23" viewBox="0 0 90 108" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="8" y="5" width="74" height="98" rx="9" stroke="white" stroke-width="1.5" fill="none"/>
+      <rect x="20" y="14" width="13" height="56" rx="2" fill="white"/>
+      <rect x="57" y="14" width="13" height="56" rx="2" fill="white"/>
+      <polygon points="33,14 46,14 57,70 44,70" fill="white"/>
+      <rect x="61" y="14" width="9" height="9" rx="1.5" fill="#BF9A4A"/>
+      <rect x="21" y="84" width="48" height="7" rx="3.5" stroke="white" stroke-width="1.5" fill="none" opacity="0.65"/>
+    </svg>
+    <span class="footer-name">Novo Co</span>
+  </div>
+  <span class="footer-copy">© 2026 Novo Co LLC. All rights reserved.</span>
+</footer>
+
+</body>
+</html>
